@@ -8,11 +8,13 @@ import LogIn from "../pages/LogIn";
 import Apartments from "../pages/Apartments";
 import ApartmentListing from "../pages/ApartmentListing";
 import ApartmentDetails from "../pages/ApartmentDetails"
+import ErrorPages from "../pages/ErrorPages";
 
   export const router = createBrowserRouter([
     {
       path: '/',
       element: <Root></Root>,
+      errorElement: <ErrorPages></ErrorPages>,
      
       children: [
         {
