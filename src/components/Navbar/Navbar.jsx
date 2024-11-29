@@ -91,8 +91,8 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "btn btn-outline border-orange-400 text-orange-400"
-              : "bg-orange-400  rounded-lg text-white font-bold"
+              ? "btn btn-outline border-blue-400 text-blue-400"
+              : "bg-blue-400 py-2 px-4 rounded-lg text-white font-bold"
           }
         >
           Home
@@ -103,8 +103,8 @@ const Navbar = () => {
           to="/apartment"
           className={({ isActive }) =>
             isActive
-              ? "btn btn-outline border-orange-400 text-orange-400"
-              : "bg-orange-400 py-2 px-4 rounded-lg text-white font-bold"
+              ? "btn btn-outline border-blue-400 text-blue-400"
+              : "bg-blue-400 py-2 px-4 rounded-lg text-white font-bold"
           }
         >
           Apartments
@@ -115,8 +115,8 @@ const Navbar = () => {
           to="/upcoming"
           className={({ isActive }) =>
             isActive
-              ? "btn btn-outline border-orange-400 text-orange-400"
-              : "bg-orange-400 py-2 px-4 rounded-lg text-white font-bold"
+              ? "btn btn-outline border-blue-400 text-blue-400"
+              : "bg-blue-400 py-2 px-4 rounded-lg text-white font-bold"
           }
         >
           Upcoming
@@ -156,7 +156,7 @@ const Navbar = () => {
         </div>
         {/* Logo */}
         <Link to="/">
-          <span className="text-xl font-bold text-blue-700">ManageNest</span>
+          <span className="text-xl font-bold text-blue-500">ManageNest</span>
           {/* Uncomment below if you have a logo image */}
           {/* <img src={logo} alt="Logo" className="w-32" /> */}
         </Link>
@@ -170,7 +170,7 @@ const Navbar = () => {
       {/* Navbar End */}
       <div className="navbar-end flex items-center space-x-4">
         {/* Notifications Icon */}
-        <MdOutlineNotificationAdd className="text-3xl text-orange-400" />
+        <MdOutlineNotificationAdd className="text-3xl text-blue-500" />
 
         {/* User Profile */}
         {user ? (
@@ -193,7 +193,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/dashboard/profile"
-                  className="btn bg-orange-500 text-white mt-2"
+                  className="btn bg-blue-500 text-white mt-2"
                 >
                   Dashboard
                 </NavLink>
@@ -201,7 +201,7 @@ const Navbar = () => {
               <li>
                 <button
                   onClick={logOut}
-                  className="btn bg-orange-500 text-white mt-2"
+                  className="btn bg-blue-500 text-white mt-2"
                 >
                   Logout
                 </button>
@@ -210,7 +210,7 @@ const Navbar = () => {
           </div>
         ) : (
           <Link to="/login">
-            <button className="btn bg-orange-400 text-white hover:bg-orange-500">
+            <button className="btn bg-blue-400 text-white hover:bg-blue-500">
               Join Us
             </button>
           </Link>
