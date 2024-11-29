@@ -76,10 +76,12 @@
 // };
 
 // export default Navbar;
-import React from "react";
+
 import UseAuth from "../../hooks/UseAuth";
+import logo from "../../assets/Managenest-1-removebg-preview.png"
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineNotificationAdd } from "react-icons/md";
+
 
 const Navbar = () => {
   const { user, logOut } = UseAuth();
@@ -91,8 +93,8 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "btn btn-outline border-blue-400 text-blue-400"
-              : "bg-blue-400 py-2 px-4 rounded-lg text-white font-bold"
+              ? "btn btn-outline border-cyan-500 text-cyan-500"
+              : "bg-cyan-500 py-2 px-4 rounded-lg text-white font-bold"
           }
         >
           Home
@@ -103,8 +105,8 @@ const Navbar = () => {
           to="/apartment"
           className={({ isActive }) =>
             isActive
-              ? "btn btn-outline border-blue-400 text-blue-400"
-              : "bg-blue-400 py-2 px-4 rounded-lg text-white font-bold"
+              ? "btn btn-outline border-cyan-500 text-cyan-500"
+              : "bg-cyan-500 py-2 px-4 rounded-lg text-white font-bold"
           }
         >
           Apartments
@@ -115,8 +117,8 @@ const Navbar = () => {
           to="/upcoming"
           className={({ isActive }) =>
             isActive
-              ? "btn btn-outline border-blue-400 text-blue-400"
-              : "bg-blue-400 py-2 px-4 rounded-lg text-white font-bold"
+              ? "btn btn-outline border-cyan-500 text-cyan-500"
+              : "bg-cyan-500 py-2 px-4 rounded-lg text-white font-bold"
           }
         >
           Upcoming
@@ -156,9 +158,9 @@ const Navbar = () => {
         </div>
         {/* Logo */}
         <Link to="/">
-          <span className="text-xl font-bold text-blue-500">ManageNest</span>
+          
           {/* Uncomment below if you have a logo image */}
-          {/* <img src={logo} alt="Logo" className="w-32" /> */}
+          <img src={logo} alt="Logo" className="w-40" />
         </Link>
       </div>
 
@@ -170,7 +172,7 @@ const Navbar = () => {
       {/* Navbar End */}
       <div className="navbar-end flex items-center space-x-4">
         {/* Notifications Icon */}
-        <MdOutlineNotificationAdd className="text-3xl text-blue-500" />
+        <MdOutlineNotificationAdd className="text-3xl text-cyan-500" />
 
         {/* User Profile */}
         {user ? (
@@ -193,7 +195,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   to="/dashboard/profile"
-                  className="btn bg-blue-500 text-white mt-2"
+                  className="btn bg-cyan-500 text-white mt-2"
                 >
                   Dashboard
                 </NavLink>
@@ -210,7 +212,7 @@ const Navbar = () => {
           </div>
         ) : (
           <Link to="/login">
-            <button className="btn bg-blue-400 text-white hover:bg-blue-500">
+            <button className="btn bg-cyan-400 text-white hover:bg-blue-500">
               Join Us
             </button>
           </Link>

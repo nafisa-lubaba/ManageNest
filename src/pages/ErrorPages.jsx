@@ -10,6 +10,7 @@ const ErrorPages = () => {
     <img src="https://i.ibb.co.com/DgYmCyD/robot.jpg" alt="" />
     <p className="text-2xl font-semibold md:text-3xl text-blue-500">Sorry, we could not find this page.</p>
     <p className="mt-4 mb-8 text-blue-500">But dont worry, you can find plenty of other things on our homepage.</p>
+    
     <Link to='/'><button  className="btn bg-blue-400 text-white">GO BACK TO HOME</button></Link>
     
 </div>
