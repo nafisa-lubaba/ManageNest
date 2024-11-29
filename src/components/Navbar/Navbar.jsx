@@ -92,7 +92,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "btn btn-outline border-orange-400 text-orange-400"
-              : "bg-orange-400 py-2 px-4 rounded-lg text-white font-bold"
+              : "bg-orange-400  rounded-lg text-white font-bold"
           }
         >
           Home
@@ -156,7 +156,7 @@ const Navbar = () => {
         </div>
         {/* Logo */}
         <Link to="/">
-          <span className="text-xl font-bold text-orange-400">LOGO</span>
+          <span className="text-xl font-bold text-blue-700">ManageNest</span>
           {/* Uncomment below if you have a logo image */}
           {/* <img src={logo} alt="Logo" className="w-32" /> */}
         </Link>
