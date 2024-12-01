@@ -8,7 +8,7 @@ const ApartmentCard = ({ apartment }) => {
         <div className="w-full max-w-sm bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
             <div className="relative h-48 overflow-hidden">
                 <img src={apartment.image || '/default-image.jpg'} alt={apartment.category || 'Apartment'} className="w-full h-full object-cover" />
-                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm">
+                <div className="absolute top-4 left-4 bg-cyan-500 text-white px-3 py-1 rounded-full text-sm">
                     {apartment.category}
                 </div>
             </div>
@@ -43,7 +43,7 @@ const ApartmentCard = ({ apartment }) => {
                 <div className="mb-4">
                     <div className="flex flex-wrap gap-2">
                         {apartment.facilities?.map((facility, index) => (
-                            <span key={index} className="bg-blue-50 text-blue-600 px-2 py-1 rounded-full text-xs">
+                            <span key={index} className="bg-blue-50 text-cyan-bg-cyan-500 px-2 py-1 rounded-full text-xs">
                                 {facility}
                             </span>
                         ))}
@@ -52,8 +52,8 @@ const ApartmentCard = ({ apartment }) => {
 
                 <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-1">
-                        <FaDollarSign className="w-5 h-5 text-green-600" />
-                        <span className="text-xl font-bold text-green-600">{apartment.rentPerMonth || 'N/A'}</span>
+                        <FaDollarSign className="w-5 h-5 text-[#0e7490]" />
+                        <span className="text-xl font-bold text-[#0e7490]">{apartment.rentPerMonth || 'N/A'}</span>
                         <span className="text-gray-500">/month</span>
                     </div>
                     <div className="flex items-center gap-1 text-gray-600">
@@ -64,7 +64,7 @@ const ApartmentCard = ({ apartment }) => {
 
                 <Link
                     to={`/product/${apartment.id}`}
-                    className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center gap-2">
+                    className="w-full bg-cyan-500 text-white py-2 rounded-lg hover:bg-[#0e7490] transition-colors duration-300 flex items-center justify-center gap-2">
                     <FaMapPin className="w-4 h-4" />
                     View Details
                 </Link>

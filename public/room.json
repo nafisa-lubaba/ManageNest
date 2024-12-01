@@ -1,6 +1,6 @@
 [
     {
-        "id": "001",
+       
         "category": "Studio Apartment",
         "image": "https://i.ibb.co.com/xgHFXk3/studio-apartment-1.png",
         "floorNo": "2nd Floor",
@@ -34,7 +34,7 @@
         "petPolicy": "No Pets Allowed"
     },
     {
-        "id": "002",
+       
         "category": "Studio Apartment",
         "image": "https://i.ibb.co.com/xgHFXk3/studio-apartment-1.png",
         "floorNo": "4th Floor",
@@ -68,7 +68,7 @@
         "petPolicy": "Small Pets Allowed"
     },
     {
-        "id": "003",
+       
         "category": "Studio Apartment",
         "image": "https://i.ibb.co.com/xgHFXk3/studio-apartment-1.png",
         "floorNo": "3rd Floor",
@@ -102,7 +102,7 @@
         "petPolicy": "No Pets Allowed"
     },
     {
-        "id": "004",
+        
         "category": "Studio Apartment",
         "image": "https://i.ibb.co.com/xgHFXk3/studio-apartment-1.png",
         "floorNo": "5th Floor",
@@ -136,7 +136,7 @@
         "petPolicy": "Pets Allowed"
     },
     {
-        "id": "007",
+        
         "category": "1-Bedroom Apartment",
         "image": "https://i.ibb.co.com/ZYdS62M/1-Bedroom-Apartment-1.png",
         "floorNo": "3rd Floor",
@@ -170,7 +170,7 @@
         "petPolicy": "Pets Allowed"
     },
     {
-        "id": "008",
+        
         "category": "1-Bedroom Apartment",
         "image": "https://i.ibb.co.com/ZYdS62M/1-Bedroom-Apartment-1.png",
         "floorNo": "4th Floor",
@@ -204,7 +204,7 @@
         "petPolicy": "No Pets Allowed"
     },
     {
-        "id": "009",
+        
         "category": "1-Bedroom Apartment",
         "image": "https://i.ibb.co.com/ZYdS62M/1-Bedroom-Apartment-1.png",
         "floorNo": "2nd Floor",
@@ -238,7 +238,7 @@
         "petPolicy": "Small Pets Allowed"
     },
     {
-        "id": "010",
+       
         "category": "1-Bedroom Apartment",
         "image": "https://i.ibb.co.com/ZYdS62M/1-Bedroom-Apartment-1.png",
         "floorNo": "5th Floor",
@@ -272,7 +272,7 @@
         "petPolicy": "Pets Allowed"
     },
     {
-        "id": "013",
+        
         "category": "2-Bedroom Apartment",
         "image": "https://i.ibb.co.com/R3J5CVJ/2-Bedroom-Apartment-5.png",
         "floorNo": "4th Floor",
@@ -306,7 +306,7 @@
         "petPolicy": "Pets Allowed"
     },
     {
-        "id": "014",
+       
         "category": "2-Bedroom Apartment",
         "image": "https://i.ibb.co.com/R3J5CVJ/2-Bedroom-Apartment-5.png",
         "floorNo": "3rd Floor",
@@ -340,7 +340,7 @@
         "petPolicy": "No Pets Allowed"
     },
     {
-        "id": "015",
+        
         "category": "2-Bedroom Apartment",
         "image": "https://i.ibb.co.com/R3J5CVJ/2-Bedroom-Apartment-5.png",
         "floorNo": "5th Floor",
@@ -374,7 +374,7 @@
         "petPolicy": "Small Pets Allowed"
     },
     {
-        "id": "016",
+      
         "category": "2-Bedroom Apartment",
         "image": "https://i.ibb.co.com/R3J5CVJ/2-Bedroom-Apartment-5.png",
         "floorNo": "2nd Floor",
@@ -408,7 +408,7 @@
         "petPolicy": "Pets Allowed"
     },
     {
-        "id": "019",
+        
         "category": "3-Bedroom Apartment",
         "image": "https://i.ibb.co.com/4SC4Z38/3-Bedroom-Apartment-6.png",
         "floorNo": "5th Floor",
@@ -442,7 +442,7 @@
         "petPolicy": "Pets Allowed"
     },
     {
-        "id": "020",
+       
         "category": "3-Bedroom Apartment",
         "image": "https://i.ibb.co.com/4SC4Z38/3-Bedroom-Apartment-6.png",
         "floorNo": "4th Floor",
@@ -476,7 +476,7 @@
         "petPolicy": "No Pets Allowed"
     },
     {
-        "id": "021",
+       
         "category": "3-Bedroom Apartment",
         "image": "https://i.ibb.co.com/4SC4Z38/3-Bedroom-Apartment-6.png",
         "floorNo": "6th Floor",
@@ -510,7 +510,7 @@
         "petPolicy": "Small Pets Allowed"
     },
     {
-        "id": "022",
+        
         "category": "3-Bedroom Apartment",
         "image": "https://i.ibb.co.com/4SC4Z38/3-Bedroom-Apartment-6.png",
         "floorNo": "3rd Floor",

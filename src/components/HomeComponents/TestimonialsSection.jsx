@@ -1,6 +1,7 @@
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import SharedTitle from '../Shared/SharedTitle';
 
 const testimonials = [
     { name: 'John Doe', feedback: 'Amazing management service, highly responsive!', image: 'https://i.ibb.co/fHjQqNp/3551911.jpg' },
@@ -36,24 +37,22 @@ const TestimonialsSection = () => {
     };
 
     return (
-        <section className="py-20 bg-blue-50">
+        <section className="py-16">
             <div className="max-w-6xl mx-auto px-4 text-center">
-                <h2 className="text-4xl font-bold mb-12 text-gray-800">
-                    What Our Residents Say
-                </h2>
+                <SharedTitle heading="What Our Residents Say" />
                 <Slider {...sliderSettings}>
                     {testimonials.map((testimonial, index) => (
-                        <div key={index} className="p-6">
-                            <div className="bg-white p-8 shadow-lg rounded-xl">
+                        <div key={index} className="p-4">
+                            <div className="bg-cyan-500 p-8 shadow-lg rounded-xl">
                                 <img
                                     src={testimonial.image}
                                     alt={testimonial.name}
                                     className="w-24 h-24 rounded-full mx-auto mb-6 shadow-md"
                                 />
-                                <p className="text-gray-600 italic mb-4">
+                                <p className="text-white italic mb-4">
                                     "{testimonial.feedback}"
                                 </p>
-                                <h3 className="text-lg font-semibold text-gray-800">
+                                <h3 className="text-lg font-semibold text-white">
                                     {testimonial.name}
                                 </h3>
                             </div>

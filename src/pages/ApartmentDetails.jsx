@@ -49,7 +49,7 @@ const ApartmentDetails = () => {
         <div className="container mx-auto p-6 min-h-screen">
             <button
                 onClick={() => navigate("/")}
-                className="mb-6 flex items-center gap-2 text-blue-700 hover:text-blue-900 font-semibold transition-all"
+                className="mb-6 flex items-center gap-2 text-cyan-500 hover:text-cyan-500 font-semibold transition-all"
             >
                 <FaArrowLeft className="w-4 h-4" /> Back to Listings
             </button>
@@ -61,7 +61,7 @@ const ApartmentDetails = () => {
                         alt={apartment.category}
                         className="w-full h-96 object-cover"
                     />
-                    <div className="absolute top-4 left-4 bg-blue-700 text-white px-4 py-1 rounded-full text-sm shadow-lg">
+                    <div className="absolute top-4 left-4 bg-cyan-500 text-white px-4 py-1 rounded-full text-sm shadow-lg">
                         {apartment.category}
                     </div>
                 </div>
@@ -70,26 +70,26 @@ const ApartmentDetails = () => {
                     <h1 className="text-4xl font-bold text-gray-800 mb-4">
                         {apartment.blockName} - {apartment.apartmentNo}
                     </h1>
-                    <p className="text-2xl text-green-600 font-semibold mb-6">
+                    <p className="text-2xl text-[#0e7490] font-semibold mb-6">
                         ${apartment.rentPerMonth}/month
                     </p>
 
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                         {/* Property Info */}
                         <div className="flex items-center gap-2">
-                            <FaSquare className="text-blue-500 w-6 h-6" />
+                            <FaSquare className="text-cyan-500 w-6 h-6" />
                             <span className="text-gray-600">{apartment.size} sq ft</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <FaBath className="text-blue-500 w-6 h-6" />
+                            <FaBath className="text-cyan-500 w-6 h-6" />
                             <span className="text-gray-600">{apartment.rooms.bathrooms} Bathrooms</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <FaBed className="text-blue-500 w-6 h-6" />
+                            <FaBed className="text-cyan-500 w-6 h-6" />
                             <span className="text-gray-600">{apartment.rooms.bedrooms} Bedrooms</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <FiTarget className="text-blue-500 w-6 h-6" />
+                            <FiTarget className="text-cyan-500 w-6 h-6" />
                             <span className="text-gray-600">{apartment.availabilityStatus}</span>
                         </div>
                     </div>
@@ -102,7 +102,7 @@ const ApartmentDetails = () => {
                                 {apartment.facilities.map((facility, index) => (
                                     <span
                                         key={index}
-                                        className="flex items-center gap-2 bg-green-50 text-green-600 px-3 py-1 rounded-full shadow-sm"
+                                        className="flex items-center gap-2 bg-cyan-100 text-[#0e7490] px-3 py-1 rounded-full shadow-sm"
                                     >
                                         <FaCheckCircle className="w-4 h-4" />
                                         {facility}
@@ -209,7 +209,7 @@ const ApartmentDetails = () => {
 
             <div className="mt-8 flex justify-center">
                 <button
-                    className="w-full py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-all"
+                    className="w-full py-3 bg-cyan-500 text-white font-semibold rounded-lg hover:bg-[#0e7490] transition-all"
                 >
                     Book Now
                 </button>
