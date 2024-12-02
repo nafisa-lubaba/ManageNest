@@ -22,12 +22,13 @@ import ErrorPages from "../pages/ErrorPages";
             element: <Home></Home>,
         },
         {
-            path: "/Apartment",
+            path: "/apartment",
             element:<ApartmentListing></ApartmentListing>,
         },
         {
-          path: "/product/:id",
+          path: "/apartment/:id",
           element: <ApartmentDetails/>,
+          loader:({ params }) => fetch(`${import.meta.env.VITE_API_URL}/apartmentss/${params.id}`)
       },
         
         

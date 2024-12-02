@@ -4,10 +4,13 @@ import StatisticsSection from '../components/HomeComponents/StatisticsSection'
 import CTASection from '../components/HomeComponents/CTASection'
 // import NewsletterSubscription from '../components/HomeComponents/NewsletterSubscription'
 import Slider from '../components/Slider/Slider'
+import Cards from '../components/HomeComponents/Cards'
 const Home = () => {
     return (
         <div>
             <Slider></Slider>
+            <Cards></Cards>
+
             <FeaturesSection />
             <TestimonialsSection />
             <StatisticsSection />

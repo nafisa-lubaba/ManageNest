@@ -64,7 +64,7 @@ const ApartmentListing = () => {
         const getData = async () => {
             try {
                 // setLoading(true);
-                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/apartmentss`);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/apartments`);
                 setApartments(data);
             } catch (err) {
                 setError(err.message || "Something went wrong");

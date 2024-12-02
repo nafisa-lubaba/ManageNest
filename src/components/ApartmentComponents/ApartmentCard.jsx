@@ -63,7 +63,9 @@ const ApartmentCard = ({ apartment }) => {
                 </div>
 
                 <Link
-                    to={`/product/${apartment.id}`}
+                key={apartment._id}
+                    to={`/apartment/${apartment._id}`}
+                    
                     className="w-full bg-cyan-500 text-white py-2 rounded-lg hover:bg-[#0e7490] transition-colors duration-300 flex items-center justify-center gap-2">
                     <FaMapPin className="w-4 h-4" />
                     View Details
