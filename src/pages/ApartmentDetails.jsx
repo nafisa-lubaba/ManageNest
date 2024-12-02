@@ -239,7 +239,7 @@
 import { useState, useEffect } from "react";
 import { FaArrowLeft, FaBath, FaBed, FaSquare, FaCheckCircle } from "react-icons/fa";
 import { FiTarget } from "react-icons/fi";
-import { MdOutlinePets } from "react-icons/md";
+
 import { useNavigate, useParams } from "react-router-dom";
 import "./ApartmentDetails.css";
 import axios from "axios";
