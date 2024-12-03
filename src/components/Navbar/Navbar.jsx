@@ -35,14 +35,14 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/upcoming"
+          to="/aboutUs"
           className={({ isActive }) =>
             isActive
               ? "btn btn-outline border-cyan-500 text-cyan-500"
               : "bg-cyan-500 py-2 px-4 rounded-lg text-white font-bold"
           }
         >
-          Upcoming
+          About us
         </NavLink>
       </li>
     </>
@@ -115,7 +115,7 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/profile"
+                  to="/dashboard"
                   className="btn bg-cyan-500 text-white mt-2"
                 >
                   Dashboard

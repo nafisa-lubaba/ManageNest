@@ -1,104 +1,68 @@
-import { FaArrowRight } from "react-icons/fa";
-import { RiPriceTag2Line } from "react-icons/ri";
-import { TbListDetails } from "react-icons/tb";
-import { Link } from "react-router-dom";
-
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Card = ({ card }) => {
-    const { _id, image, rentPerMonth, apartmentNo, 
-        blockName } = card;
-    const cardStyle = {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        borderRadius: '15px',
-        overflow: 'hidden',
-        transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
-    };
-    return (
-    //     <div data-aos="fade-up-right" data-aos-duration="4000"
-    //     className="card mb-10 shadow-lg hover:shadow-2xl transform hover:scale-105"
-    //     style={cardStyle}
-    // >
-    //     {/* Card content with gradient overlay */}
-    //     <div className="card-details p-5 text-white h-full">
-    //         <div className="flex flex-col justify-between h-full">
-    //             <div data-aos="fade-up-right" data-aos-duration="3000" className="pt-40 pb-5">
-    //                 {/* Title */}
-    //                 <h2 className="text-2xl font-bold mb-2">{title}</h2>
+  const { _id, image, rentPerMonth, apartmentNo, blockName } = card;
+  const [isHovered, setIsHovered] = useState(false);
 
-    //                 {/* Description */}
-    //                 <div className="flex items-center gap-2 mb-4">
-    //                     <TbListDetails
-    //                     className="text-white text-3xl" />
-    //                     <p className="text-lg leading-tight">{room_description}</p>
-    //                 </div>
-
-    //                 {/* Price */}
-    //                 <div className="flex items-center gap-2">
-    //                     <RiPriceTag2Line className="text-white text-2xl" />
-    //                     <p className="text-xl font-semibold">${price_per_night} / night</p>
-    //                 </div>
-    //             </div>
-
-    //             {/* Button to book now */}
-    //             <Link
-    //                 // to={`/rooms/${_id}`}
-    //                 className="self-end mt-4 transform transition-transform duration-300 hover:scale-105"
-    //             >
-    //                 <div className="bg-[#158260] text-white flex items-center gap-2 px-4 py-2 rounded-lg shadow-md hover:bg-[#0f6750]">
-    //                     <p className="text-sm font-semibold uppercase">Book now</p>
-    //                     <FaArrowRight />
-    //                 </div>
-    //             </Link>
-    //         </div>
-    //     </div>
-    // </div>
+  return (
     <div
-    data-aos="zoom-in"
-    data-aos-duration="2000"
-    className="card mb-10 shadow-lg hover:shadow-xl transform hover:scale-105 rounded-lg overflow-hidden"
-    style={cardStyle}
->
-    {/* Image Section */}
-    <div className="relative">
+      className="relative group h-[400px] rounded-2xl overflow-hidden shadow-lg transition-all duration-500 mb-8"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      <div className="absolute inset-0 w-full h-full">
         <img 
-            src={image} 
-            alt={apartmentNo} 
-            className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" 
+          src={image} 
+          alt={blockName}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-    </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+      </div>
 
-    {/* Content Section */}
-    <div className="card-details p-6 bg-white">
-        <div className="flex flex-col justify-between h-full">
-            {/* Title */}
-            <h2 className="text-xl font-semibold mb-2 text-gray-800">{blockName}</h2>
-
-            {/* Description */}
-            {/* <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                <TbListDetails className="inline-block mr-2 text-gray-500 text-lg" />
-                {}
-            </p> */}
-
-            {/* Price Section */}
-            <div className="flex justify-between items-center">
-                <p className="text-lg font-bold text-cyan-500">${rentPerMonth} / night</p>
-                <Link
-                    to={`/apartment/${_id}`}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500 text-white shadow-md hover:bg-cyan-700 transition-transform duration-300"
-                >
-                    <p className="text-sm font-semibold uppercase">Book Now</p>
-                    <FaArrowRight />
-                </Link>
-            </div>
+      <div className="relative h-full flex flex-col justify-between p-6">
+        {/* Top Section */}
+        <div className="space-y-2">
+          <span className="inline-block px-3 py-1 bg-cyan-500/80 backdrop-blur-sm text-white text-sm rounded-full">
+            Apartment {apartmentNo}
+          </span>
+          <h2 className={`text-2xl font-bold text-white transition-all duration-500 ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'}`}>
+            {blockName}
+          </h2>
         </div>
-    </div>
-</div>
 
-    );
+        {/* Bottom Section */}
+        <div className={`space-y-4 transition-all duration-500 ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+          {/* Price Tag */}
+          <div className="inline-block px-4 py-2 bg-white/90 backdrop-blur-sm rounded-lg">
+            <span className="text-gray-800 font-bold text-lg">
+              ${rentPerMonth}
+            </span>
+            <span className="text-gray-600 text-sm ml-1">
+              / night
+            </span>
+          </div>
+
+          {/* Book Now Button */}
+          <Link
+            to={`/apartment/${_id}`}
+            className="group/btn flex items-center gap-2 w-full bg-cyan-500 hover:bg-cyan-600 text-white p-3 rounded-xl transition-all duration-300"
+          >
+            <span className="flex-1 text-center font-semibold">Book Now</span>
+            <span className="w-6 h-6 flex items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:translate-x-1">
+              →
+            </span>
+          </Link>
+        </div>
+      </div>
+
+      {/* Decorative Elements */}
+      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-bl-full" />
+      <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-cyan-500/20 to-transparent rounded-tr-full" />
+    </div>
+  );
 };
 
 export default Card;
-

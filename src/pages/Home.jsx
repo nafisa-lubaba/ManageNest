@@ -3,7 +3,7 @@ import TestimonialsSection from '../components/HomeComponents/TestimonialsSectio
 import StatisticsSection from '../components/HomeComponents/StatisticsSection'
 import CTASection from '../components/HomeComponents/CTASection'
 // import NewsletterSubscription from '../components/HomeComponents/NewsletterSubscription'
-import Slider from '../components/Slider/Slider'
+import Slider from '../components/HomeComponents/Slider'
 import Cards from '../components/HomeComponents/Cards'
 import Maps from '../components/HomeComponents/Maps'
 import Coupons from '../components/HomeComponents/Coupons'
