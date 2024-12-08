@@ -3,7 +3,7 @@
 
 import { FaBuilding, FaChartBar, FaClock, FaStar, FaUsers } from "react-icons/fa";
 import { FiShield } from "react-icons/fi";
-import SharedTitle from "../components/Shared/SharedTitle";
+// import SharedTitle from "../../components/Shared/SharedTitle";
 
 const AboutUs = () => {
   return (

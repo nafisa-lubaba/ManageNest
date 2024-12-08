@@ -1,287 +1,209 @@
-
-// import { FaHome, FaUser } from "react-icons/fa";
-// import { Link, NavLink, Outlet } from "react-router-dom";
-// import useAuth from "../hooks/UseAuth"; // Ensure the hook is correctly imported
-// import UseAdmin from "../hooks/UseAdmin";
-// import logo from "../../src/assets/Managenest-1-removebg-preview.png"
-// import UseMember from "../hooks/UseMember";
-
-// const Dashboard = () => {
-//     const { user } = useAuth();
-//     console.log(user)
-//     const [isAdmin] = UseAdmin();
-//     console.log(isAdmin)
-//     const [isMember] = UseMember();
-//     console.log(isMember)
-    
-
-//     const adminLinks = [
-//         {
-//             name: 'Admin Profile',
-//             path: '/dashboard/admin-profile',
-
-//         },
-//         {
-//             name: 'Manage Members',
-//             path: '/dashboard/manage-members',
-
-//         },
-//         {
-//             name: 'Make Announcement',
-//             path: '/dashboard/make-announcement',
-
-//         },
-//         {
-//             name: 'Agreement Requests',
-//             path: '/dashboard/agreement-requests',
-
-//         },
-//         {
-//             name: 'Manage Coupons',
-//             path: '/dashboard/manage-coupons',
-
-//         },
-//     ]
-//     const memberLinks = [
-//         {
-//             name: 'My Profile',
-//             path: '/dashboard/my-profile',
-
-//         },
-//         {
-//             name: 'Make payment',
-//             path: '/dashboard/make-payment',
-
-//         },
-//         {
-//             name: 'Payment History',
-//             path: '/dashboard/payment-history',
-
-//         },
-//         {
-//             name: 'Announcements',
-//             path: '/dashboard/announcements',
-
-//         },
-//     ]
-//     const userLinks = [
-//         {
-//             name: 'My Profile',
-//             path: '/dashboard/my-profile',
-
-//         },
-//         {
-//             name: 'Announcements',
-//             path: '/dashboard/announcements',
-
-//         },
-
-//     ]
-//     return (
-//         <div className="flex">
-//             {/* Sidebar */}
-//             <aside className="w-64 min-h-screen bg-cyan-500">
-//                 <Link to="/">
-
-//                     {/* Uncomment below if you have a logo image */}
-//                     <img src={logo} alt="Logo" className="w-40 h-20" />
-//                 </Link>
-
-//                 {
-//                     isAdmin && adminLinks.map((link, index) => (
-//                         <Link to={link.path} key={index} className="block">
-//                             <div className="flex items-center gap-2 p-2 rounded hover:bg-cyan-600 text-white"
-
-//                             >
-
-//                                 <span className="ml-4">{link.name}</span>
-//                             </div>
-//                         </Link>
-//                     ))
-//                 }
-//                  {
-//                     isMember && memberLinks.map((link, index) => (
-//                         <Link to={link.path} key={index} className="block">
-//                             <div className="flex items-center gap-2 p-2 rounded hover:bg-cyan-600 text-white"
-
-//                             >
-
-//                                 <span className="ml-4">{link.name}</span>
-//                             </div>
-//                         </Link>
-//                     ))
-//                 }
-//                 {
-//                     !isAdmin && !isMember  && userLinks.map((link, index) => (
-//                         <Link to={link.path} key={index} className="block">
-//                             <div className="flex items-center gap-2 p-2 rounded hover:bg-cyan-600 text-white"
-
-//                             >
-
-//                                 <span className="ml-4">{link.name}</span>
-//                             </div>
-//                         </Link>
-//                     ))
-//                 }
-                
-//             </aside>
-
-//             {/* Main Content */}
-//             <main className="flex-1 p-8 bg-gray-100">
-//                 <Outlet />
-//             </main>
-//         </div>
-//     );
-// };
-
-// export default Dashboard;
-
-
-
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/UseAuth";
 import UseAdmin from "../hooks/UseAdmin";
 import UseMember from "../hooks/UseMember";
-import logo from "../../src/assets/Managenest-1-removebg-preview.png"
+import logo from "../../src/assets/Managenest-1-removebg-preview.png";
+// import { FaUser, FaUserGroup, FaBullhorn, FaFileAlt, FaTicketAlt, FaCreditCard, FaClock, FaBell, FaSignOutAlt } from "react-icons/fa"; // Example icons
+import { FaBell, FaBullhorn, FaClock, FaCreditCard, FaFileAlt, FaSignOutAlt, FaTicketAlt, FaUser } from "react-icons/fa";
+import { FaUserGroup } from "react-icons/fa6";
 
 
 const Dashboard = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
+  const navigate = useNavigate();
+  console.log(user);
+
   const [isAdmin] = UseAdmin();
   const [isMember] = UseMember();
 
   const adminLinks = [
     {
       name: 'Admin Profile',
-      path: '/dashboard/admin-profile',
-    //   icon: <user className="w-5 h-5" />
+      path: '/dashboard/adminProfile',
+      icon: <FaUser />,
     },
     {
       name: 'Manage Members',
-      path: '/dashboard/manage-members',
-    //   icon: <UserGroupIcon className="w-5 h-5" />
+      path: '/dashboard/manageMembers',
+      icon: <FaUserGroup />,
     },
+    // {
+    //   name: 'Manage Users',
+    //   path: '/dashboard/manageUsers',
+    //   icon: <FaUserGroup />,
+    // },
     {
       name: 'Make Announcement',
-      path: '/dashboard/make-announcement',
-    //   icon: <BullhornIcon className="w-5 h-5" />
+      path: '/dashboard/makeAnnouncement',
+      icon: <FaBullhorn />,
     },
     {
       name: 'Agreement Requests',
-      path: '/dashboard/agreement-requests',
-    //   icon: <DocumentTextIcon className="w-5 h-5" />
+      path: '/dashboard/agreementRequests',
+      icon: <FaFileAlt />,
     },
     {
       name: 'Manage Coupons',
-      path: '/dashboard/manage-coupons',
-    //   icon: <TicketIcon className="w-5 h-5" />
+      path: '/dashboard/manageCoupons',
+      icon: <FaTicketAlt />,
     },
   ];
 
   const memberLinks = [
     {
       name: 'My Profile',
-      path: '/dashboard/my-profile',
-    //   icon: <UserIcon className="w-5 h-5" />
+      path: '/dashboard/memberProfile',
+      icon: <FaUser />,
     },
     {
       name: 'Make Payment',
-      path: '/dashboard/make-payment',
-    //   icon: <CreditCardIcon className="w-5 h-5" />
+      path: '/dashboard/makePayment',
+      icon: <FaCreditCard />,
     },
     {
       name: 'Payment History',
-      path: '/dashboard/payment-history',
-    //   icon: <ClockIcon className="w-5 h-5" />
+      path: '/dashboard/paymentistory',
+      icon: <FaClock />,
     },
     {
       name: 'Announcements',
       path: '/dashboard/announcements',
-    //   icon: <BellIcon className="w-5 h-5" />
+      icon: <FaBell />,
     },
   ];
 
   const userLinks = [
     {
       name: 'My Profile',
-      path: '/dashboard/my-profile',
-    //   icon: <UserIcon className="w-5 h-5" />
+      path: '/dashboard/userProfile',
+      icon: <FaUser />,
     },
     {
       name: 'Announcements',
       path: '/dashboard/announcements',
-    //   icon: <BellIcon className="w-5 h-5" />
+      icon: <FaBell />,
+    },
+    {
+      name: 'Service Requests',
+      path: '/dashboard/serviceRequests',
+      icon: <FaFileAlt />,
+    },
+    {
+      name: 'Contact Management',
+      path: '/dashboard/contactManagement',
+      icon: <FaUserGroup />,
     },
   ];
+
+  const handlelogOut = () => {
+    // Perform your logout logic here (e.g., clearing tokens, state, etc.)
+    console.log("User logged out"); // Replace this with actual logout logic
+    logOut()
+    // Navigate to the homepage
+    navigate("/");
+  };
 
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Sidebar */}
-      <aside className="w-64 bg-gradient-to-b from-blue-600 to-blue-800 shadow-xl">
-        <div className="p-4 border-b border-blue-700">
+      <aside className="w-64 bg-cyan-500 shadow-xl">
+        <div className="p-4 border-b border-white">
           <Link to="/" className="flex items-center justify-center">
-            <img src={logo} alt="Logo" className="w-40 h-20 object-contain" />
+            <img src={logo} alt="Logo" className="w-16 h-16 object-contain" />
           </Link>
         </div>
 
         <nav className="mt-6 px-2">
-          {isAdmin && adminLinks.map((link, index) => (
-            <Link
-              to={link.path}
-              key={index}
-              className="group flex items-center px-4 py-3 mt-1 text-gray-100 transition-all duration-200 ease-in-out rounded-lg hover:bg-blue-700 hover:translate-x-1"
-            >
-              <span className="inline-flex items-center justify-center w-8 h-8 mr-2 text-blue-100 group-hover:text-white">
-                {link.icon}
-              </span>
-              <span className="text-sm font-medium">{link.name}</span>
-            </Link>
-          ))}
+          {isAdmin &&
+            adminLinks.map((link, index) => (
+              <Link
+                to={link.path}
+                key={index}
+                className="group flex items-center px-4 py-3 mt-1 text-cyan-500 transition-all duration-200 ease-in-out rounded-lg bg-white hover:translate-x-1"
+              >
+                <span className="inline-flex items-center justify-center w-8 h-8 mr-2 text-cyan-500">
+                  {link.icon}
+                </span>
+                <span className="text-sm font-medium">{link.name}</span>
+              </Link>
+            ))}
 
-          {isMember && memberLinks.map((link, index) => (
-            <Link
-              to={link.path}
-              key={index}
-              className="group flex items-center px-4 py-3 mt-1 text-gray-100 transition-all duration-200 ease-in-out rounded-lg hover:bg-blue-700 hover:translate-x-1"
-            >
-              <span className="inline-flex items-center justify-center w-8 h-8 mr-2 text-blue-100 group-hover:text-white">
-                {link.icon}
-              </span>
-              <span className="text-sm font-medium">{link.name}</span>
-            </Link>
-          ))}
+          {isMember &&
+            memberLinks.map((link, index) => (
+              <Link
+                to={link.path}
+                key={index}
+                className="group flex items-center px-4 py-3 mt-1 text-cyan-500 transition-all duration-200 ease-in-out rounded-lg bg-white hover:translate-x-1"
+              >
+                <span className="inline-flex items-center justify-center w-8 h-8 mr-2 text-cyan-500">
+                  {link.icon}
+                </span>
+                <span className="text-sm font-medium">{link.name}</span>
+              </Link>
+            ))}
 
-          {!isAdmin && !isMember && userLinks.map((link, index) => (
-            <Link
-              to={link.path}
-              key={index}
-              className="group flex items-center px-4 py-3 mt-1 text-gray-100 transition-all duration-200 ease-in-out rounded-lg hover:bg-blue-700 hover:translate-x-1"
-            >
-              <span className="inline-flex items-center justify-center w-8 h-8 mr-2 text-blue-100 group-hover:text-white">
-                {link.icon}
-              </span>
-              <span className="text-sm font-medium">{link.name}</span>
-            </Link>
-          ))}
+          {!isAdmin &&
+            !isMember &&
+            userLinks.map((link, index) => (
+              <Link
+                to={link.path}
+                key={index}
+                className="group flex items-center px-4 py-3 mt-1 text-cyan-500 transition-all duration-200 ease-in-out rounded-lg bg-white hover:translate-x-1"
+              >
+                <span className="inline-flex items-center justify-center w-8 h-8 mr-2 text-cyan-500">
+                  {link.icon}
+                </span>
+                <span className="text-sm font-medium">{link.name}</span>
+              </Link>
+            ))}
+
+          {/* Home Button */}
+
         </nav>
 
-        {/* User Profile Section */}
-        <div className="absolute bottom-0 w-64 p-4 border-t border-blue-700">
+        <div className="absolute bottom-0 w-64 p-4 border-t border-white">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center">
-             
+            <div className="w-10 rounded-full">
+              <img
+                src={user?.photoURL || "https://via.placeholder.com/40"}
+                alt="User"
+              />
             </div>
             <div className="flex-1">
               <h3 className="text-sm font-medium text-white">{user?.displayName || 'User'}</h3>
               <p className="text-xs text-blue-200">{user?.email}</p>
             </div>
           </div>
+
+          {/* Home Button */}
+          <Link
+            to="/"
+            className="group flex items-center px-4 py-3 mt-1 text-cyan-500 transition-all duration-200 ease-in-out rounded-lg bg-white hover:translate-x-1"
+          >
+            <span className="inline-flex items-center justify-center w-8 h-8 mr-2 text-cyan-500">
+              🏠
+            </span>
+            <span className="text-sm font-medium">Home</span>
+          </Link>
+
+          {/* Logout Button */}
+          <button
+            onClick={handlelogOut}
+            className="group flex items-center px-4 py-3 mt-1 text-cyan-500 transition-all duration-200 ease-in-out rounded-lg bg-white hover:translate-x-1 w-full text-left"
+          >
+            <span className="inline-flex items-center justify-center w-8 h-8 mr-2 text-cyan-500">
+              <FaSignOutAlt />
+            </span>
+            <span className="text-sm font-medium">Logout</span>
+          </button>
+
+
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8">
-        <div className="bg-white rounded-lg shadow-md p-6">
+      <main className="flex-1 flex justify-center p-2">
+        <div className="bg-white w-full rounded-lg shadow-md p-6">
           <Outlet />
         </div>
       </main>
@@ -290,4 +212,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

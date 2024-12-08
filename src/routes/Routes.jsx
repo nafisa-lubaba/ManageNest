@@ -3,15 +3,25 @@ import {
 } from "react-router-dom";
 import Root from "../Layout/Root";
 import SignUp from "../pages/SignUp";
-import Home from "../pages/Home";
 import LogIn from "../pages/LogIn";
-// import Apartments from "../pages/Apartments";
-import ApartmentListing from "../pages/ApartmentListing";
-import ApartmentDetails from "../pages/ApartmentDetails"
-import ErrorPages from "../pages/ErrorPages";
-import AboutUs from "../pages/AboutUs";
+import ErrorPages from "../pages/SharedPages/ErrorPages";
+import Home from "../pages/SharedPages/Home";
+import ApartmentListing from "../pages/SharedPages/ApartmentListing";
+import ApartmentDetails from "../pages/SharedPages/ApartmentDetails";
+import AboutUs from "../pages/SharedPages/AboutUs";
 import Dashboard from "../Layout/Dashboard";
-import ManageUser from "../pages/Dashboard/ManageUser";
+import ManageUser from "../pages/AdminPages/ManageUser";
+import AdminProfile from "../pages/AdminPages/AdminProfile";
+import MemberProfile from "../pages/MemberPages/MemberProfile";
+import UserProfile from "../pages/UserPages/UserProfile";
+import Announcements from "../pages/UserPages/Announcements";
+import ServiceRequests from "../pages/UserPages/ServiceRequests";
+import ContactManagement from "../pages/UserPages/ContactManagement";
+import ManageCoupons from "../pages/AdminPages/ManageCoupons";
+import ManageMembers from "../pages/AdminPages/ManageMembers";
+import MakeAnnouncement from "../pages/AdminPages/MakeAnnouncement";
+import AgreementRequests from "../pages/AdminPages/AgreementRequests";
+import PaymentForm from "../pages/MemberPages/PaymentForm";
 
 export const router = createBrowserRouter([
   {
@@ -46,11 +56,61 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <Dashboard></Dashboard>,
     children: [
+      //usersRoute
       {
-        path: 'allUsers',
+        path: 'userProfile',
+        element: <UserProfile></UserProfile>,
+      },
+      {
+        path: 'announcements',
+        element: <Announcements></Announcements>,
+      },
+      {
+        path: 'serviceRequests',
+        element: <ServiceRequests></ServiceRequests>,
+      },
+      {
+        path: 'contactManagement',
+        element: <ContactManagement></ContactManagement>,
+      },
+      //memberRoute
+      {
+        path: 'memberProfile',
+        element: <MemberProfile></MemberProfile>,
+      },
+      {
+        path: 'announcements',
+        element: <Announcements></Announcements>,
+      },
+      {
+        path: 'makePayment',
+        element: <PaymentForm></PaymentForm>,
+      },
+      //adminRoute
+      {
+        path: 'adminProfile',
+        element: <AdminProfile></AdminProfile>,
+      },
+      {
+        path: 'manageCoupons',
+        element: <ManageCoupons></ManageCoupons>,
+      },
+      {
+        path: 'agreementRequests',
+        element: <AgreementRequests></AgreementRequests>,
+      },
+      {
+        path: 'makeAnnouncement',
+        element: <MakeAnnouncement></MakeAnnouncement>,
+      },
+      {
+        path: 'manageUsers',
         element: <ManageUser></ManageUser>,
       },
-
+      {
+        path: 'manageMembers',
+        element: <ManageMembers></ManageMembers>,
+      }
     ]
   },
 

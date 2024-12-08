@@ -7,16 +7,24 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./ApartmentDetails.css";
 import axios from "axios";
 import { MdOutlinePets } from "react-icons/md";
+import UseAuth from "../../hooks/UseAuth";
+import useAxiosPublic from "../../hooks/UseAxiosPublic";
+import toast from "react-hot-toast";
 
 const ApartmentDetails = () => {
     const { id } = useParams();
+    const { user } = UseAuth();
+    // console.log(user);
+    
+    const navigate = useNavigate();
     console.log(id);
 
-    const navigate = useNavigate();
     const [apartment, setApartment] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [error, setError] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         const fetchApartmentDetails = async () => {
@@ -35,6 +43,37 @@ const ApartmentDetails = () => {
     if (error) return <div className="text-center p-4 text-red-500">{error}</div>;
     if (!apartment) return <div className="text-center p-4">Loading...</div>;
 
+    const handleAgreement = async () => {
+        const agreementDetails ={
+            apartmentNo : apartment.apartmentNo,
+            status : apartment.availabilityStatus,
+            blockNo : apartment.blockName,
+            category : apartment.category,
+            facilities : apartment.facilities,
+            floorNo : apartment.floorNo,
+            gallery : apartment.gallery,
+            image : apartment.image,
+            nearbyAmenities : apartment.nearbyAmenities,
+            rentDeposit : apartment.rentDeposit,
+            rentPerMonth : apartment.rentPerMonth,
+            rooms : apartment.rooms,
+            size : apartment.size,
+            userName : user.displayName,
+            userEmail : user.email,
+            ownerEmail : apartment.ownerEmail,
+            ownerName : apartment.ownerName
+        }
+        axiosPublic.post("/bookedAppartment", agreementDetails).then((res) => {
+            if (res.data.insertedId) {
+              console.log("User added to the database");
+              toast.success("Aggrement Request Sent successfully");
+              navigate("/");
+            }
+          });
+        setIsSubmitting(true);
+        console.log(agreementDetails);
+
+    };
     // Modal functionality
     const openModal = (index) => {
         setCurrentImageIndex(index);
@@ -59,7 +98,7 @@ const ApartmentDetails = () => {
         <div className="container mx-auto p-6 min-h-screen">
             <button
                 onClick={() => navigate("/")}
-                className="mb-6 flex items-center gap-2 text-blue-700 hover:text-blue-900 font-semibold transition-all"
+                className="mb-6 flex items-center gap-2 text-cyan-500 hover:text-blue-900 font-semibold transition-all"
             >
                 <FaArrowLeft className="w-4 h-4" /> Back to Listings
             </button>
@@ -71,7 +110,7 @@ const ApartmentDetails = () => {
                         alt={apartment.category}
                         className="w-full h-96 object-cover"
                     />
-                    <div className="absolute top-4 left-4 bg-blue-700 text-white px-4 py-1 rounded-full text-sm shadow-lg">
+                    <div className="absolute top-4 left-4 bg-cyan-500 text-white px-4 py-1 rounded-full text-sm shadow-lg">
                         {apartment.category}
                     </div>
                 </div>
@@ -87,19 +126,19 @@ const ApartmentDetails = () => {
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                         {/* Property Info */}
                         <div className="flex items-center gap-2">
-                            <FaSquare className="text-blue-500 w-6 h-6" />
+                            <FaSquare className="text-cyan-500 w-6 h-6" />
                             <span className="text-gray-600">{apartment.size} sq ft</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <FaBath className="text-blue-500 w-6 h-6" />
+                            <FaBath className="text-cyan-500 w-6 h-6" />
                             <span className="text-gray-600">{apartment.rooms.bathrooms} Bathrooms</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <FaBed className="text-blue-500 w-6 h-6" />
+                            <FaBed className="text-cyan-500 w-6 h-6" />
                             <span className="text-gray-600">{apartment.rooms.bedrooms} Bedrooms</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <FiTarget className="text-blue-500 w-6 h-6" />
+                            <FiTarget className="text-cyan-500 w-6 h-6" />
                             <span className="text-gray-600">{apartment.availabilityStatus}</span>
                         </div>
                     </div>
@@ -219,9 +258,11 @@ const ApartmentDetails = () => {
 
             <div className="mt-8 flex justify-center">
                 <button
-                    className="w-full py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-all"
+                    onClick={handleAgreement}
+                    disabled={isSubmitting}
+                    className={`w-full py-3 ${isSubmitting ? "bg-gray-400" : "bg-cyan-500"} text-white font-semibold rounded-lg hover:bg-cyan-800 transition-all`}
                 >
-                    Book Now
+                    {isSubmitting ? "Submitting..." : "Agreement Now"}
                 </button>
             </div>
         </div>
