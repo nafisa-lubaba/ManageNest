@@ -118,14 +118,14 @@ const Footer = () => {
                         <div>
                             <h3 className="uppercase dark:text-white">Contact</h3>
                             <span className="block mt-2 text-sm  dark:text-gray-400 hover:underline">+0880 1906581254</span>
-                            <span className="block mt-2 text-sm  dark:text-gray-400 hover:underline">astrastay@email.com</span>
+                            <span className="block mt-2 text-sm  dark:text-gray-400 hover:underline">ManageNest21@email.com</span>
                         </div>
                     </div>
                 </div>
             </div>
             <hr className="h-px my-6 bg-gray-200 border-none dark:bg-gray-700" />
             <div>
-                <p className="text-center dark:text-gray-400">©AstraStay 2024 - All rights reserved</p>
+                <p className="text-center dark:text-gray-400">ManageNest 2024 - All rights reserved</p>
             </div>
         </div>
     </footer>

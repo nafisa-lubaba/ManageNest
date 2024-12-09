@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
-import { FaCreditCard, FaTag } from 'react-icons/fa';
+import { FaBuilding, FaCreditCard, FaHome, FaTag } from 'react-icons/fa';
 import UseAuth from '../../hooks/UseAuth';
+import { Link } from "react-router-dom";
 import useAxiosPublic from '../../hooks/UseAxiosPublic';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
-import CheckoutForm from './CheckoutForm';
-const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway);
+// import { Link } from '@material-ui/core';
 
 const PaymentForm = () => {
   const { user } = UseAuth();
@@ -69,15 +67,12 @@ const PaymentForm = () => {
     }
   };
 
-  // const handlePayment = () => {
-  //   if (!selectedMonth) {
-  //     alert('Please select a month');
-  //     return;
-  //   }
-   
-  //   const finalAmount = discountedRent || payments[0]?.rentPerMonth;
-  //   console.log('Proceeding to payment with amount:', finalAmount);
-  // };
+
+
+
+  const finalAmount = discountedRent || payments[0]?.rentPerMonth;
+  console.log('Proceeding to payment with amount:', finalAmount);
+
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
@@ -87,7 +82,7 @@ const PaymentForm = () => {
     return <div className="min-h-screen flex items-center justify-center">No accepted apartments found.</div>;
   }
 
-  const payment = payments[0]; 
+  const payment = payments[0];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#06b6d4]/10 to-[#06b6d4]/5 py-12 px-4">
@@ -200,12 +195,29 @@ const PaymentForm = () => {
                 </div>
 
                 {/* Submit Button */}
-               
-                   <div>
-                <Elements stripe={stripePromise}>
-                    <CheckoutForm></CheckoutForm>
-                </Elements>
-            </div>
+                {selectedMonth ? (
+                  <Link
+                    to={`/dashboard/payment/${payment.id}?rent=${finalAmount}&month=${selectedMonth}`}
+                    className="block w-full"
+                  >
+                    <button
+                      type="button"
+                      className="w-full px-4 py-3 bg-[#06b6d4] text-white rounded-md hover:bg-[#0891b2] focus:outline-none focus:ring-2 focus:ring-[#06b6d4] focus:ring-offset-2 transition-colors duration-200 flex items-center justify-center gap-2"
+                    >
+                      <FaCreditCard />
+                      Proceed to Payment
+                    </button>
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    disabled
+                    className="w-full px-4 py-3 bg-gray-400 text-white rounded-md flex items-center justify-center gap-2 cursor-not-allowed"
+                  >
+                    <FaCreditCard />
+                    Please Select Month
+                  </button>
+                )}
               </div>
             </form>
           </div>

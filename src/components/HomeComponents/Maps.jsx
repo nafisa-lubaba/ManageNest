@@ -9,13 +9,13 @@ const LocationMapSection = () => {
     {
       id: 1,
       name: "Tower Heights",
-      address: "123 Main Street, Downtown",
+      address: "123 Main Road, Chittagong",
       coordinates: { lat: 40.7128, lng: -74.0060 }
     },
     {
       id: 2,
       name: "Park View Residences",
-      address: "456 Park Avenue, Midtown",
+      address: "456 Park Avenue, Khulshi, Chittagong",
       coordinates: { lat: 40.7589, lng: -73.9851 }
     },
     // Add more buildings as needed

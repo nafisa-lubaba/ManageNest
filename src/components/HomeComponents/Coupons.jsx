@@ -3,9 +3,10 @@ import SharedTitle from "../Shared/SharedTitle";
 
 const Coupons = () => {
   const coupons = [
-    { id: 1, title: "10% Off Your First Purchase", code: "WELCOME10", expiry: "Expires: 31 Dec 2024" },
-    { id: 2, title: "Free Shipping on Orders Over $50", code: "SHIPFREE", expiry: "Expires: 31 Jan 2025" },
-    { id: 3, title: "Buy One Get One Free", code: "BOGO", expiry: "Expires: 15 Feb 2025" },
+    { id: 1, title: "25% Off Your First Purchase", code: "SUMMER25", expiry: "Expires: 31 Dec 2024" },
+    { id: 2, title: "Free Shipping on Orders Over $50", code: "WELCOME15", expiry: "Expires: 31 Jan 2025" },
+    { id: 3, title: "Discount upto 50%", code: "FLASH50", expiry: "Expires: 10 Jan 2025" },
+    { id: 4, title: "Big Deal & Discount upto 25%", code: "winter25", expiry: "Expires: 15 Feb 2025" },
   ];
 
   const handleCopyCode = (code) => {
@@ -20,7 +21,7 @@ const Coupons = () => {
     <section className="bg-gray-100 py-6">
       <div className="container mx-auto px-4">
         <SharedTitle heading="Exclusive Coupons" />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {coupons.map((coupon) => (
             <div
               key={coupon.id}

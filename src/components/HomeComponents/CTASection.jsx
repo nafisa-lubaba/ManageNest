@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CTASection = () => {
   return (
     <section className="py-20 bg-cyan-500 text-white">
@@ -7,9 +9,9 @@ const CTASection = () => {
           Join hundreds of buildings already benefiting from our innovative solutions.
         </p>
         <div className="flex justify-center space-x-4">
-          <button className="bg-white text-cyan-500 px-6 py-3 rounded-lg font-bold shadow-md hover:bg-gray-200">
+          <Link to='/signup' className="bg-white text-cyan-500 px-6 py-3 rounded-lg font-bold shadow-md hover:bg-gray-200">
             Sign Up Now
-          </button>
+          </Link>
           <button className="bg-cyan-700 px-6 py-3 rounded-lg font-bold shadow-md hover:bg-black">
             Learn More
           </button>

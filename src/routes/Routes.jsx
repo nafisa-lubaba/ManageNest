@@ -23,6 +23,8 @@ import MakeAnnouncement from "../pages/AdminPages/MakeAnnouncement";
 import AgreementRequests from "../pages/AdminPages/AgreementRequests";
 import PaymentForm from "../pages/MemberPages/PaymentForm";
 
+ import PaymentPage from "../pages/MemberPages/PaymentPage";
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -85,6 +87,22 @@ export const router = createBrowserRouter([
       {
         path: 'makePayment',
         element: <PaymentForm></PaymentForm>,
+      },
+      {
+        path: "payment/:id",
+        element: <PaymentPage />,
+        loader: ({ params, request }) => {
+          const url = new URL(request.url);
+          return {
+            id: params.id,
+            rent: url.searchParams.get('rent'),
+            month: url.searchParams.get('month')
+          };
+        }
+      },
+      {
+        path: 'paymentHistory',
+        element:<paymentHistory></paymentHistory>,
       },
       //adminRoute
       {
