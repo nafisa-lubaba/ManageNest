@@ -53,8 +53,14 @@ const UserProfile = () => {
               Apartment Details
             </h2>
 
-           <p className='bg-cyan-500'>By Apartment First</p>
-           <Link to='/apartment'> To Know More </Link>
+           <p className='text-black'>By Apartment First -></p>
+           <Link
+  to="/apartment"
+  className="inline-block bg-[#06b6d4] text-white px-4 mt-5 py-2 rounded-lg text-center font-medium hover:bg-[#0891b2] transition-colors duration-200"
+>
+  To Know More
+</Link>
+
           </div>
         </div>
       </div>
