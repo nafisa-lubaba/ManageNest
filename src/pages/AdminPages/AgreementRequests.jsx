@@ -32,17 +32,23 @@ const AgreementRequests = () => {
     }, [axiosPublic, user?.email]);
 
     const handleAccept = (request) => {
-        const { _id, userEmail } = request;
-        console.log('ID:', _id, 'Email:', userEmail);
+        // console.log(request);
+        
+        const { _id, userEmail,appartmentId } = request;
+        console.log('ID:', _id, 'Email:', userEmail ,appartmentId);
 
         const updatedUserRole = { role: 'member' };
         const updatedStatus = { status: 'Accepted' };
+        const updateAppartments = { status: 'Occupied' };
 
         // Making the API calls
         axiosPublic
             .put(`/updateUserRole/${userEmail}`, updatedUserRole)
             .then(() => {
                 return axiosPublic.put(`/updateRequestStatus/${_id}`, updatedStatus);
+            })
+            .then(() => {
+                return axiosPublic.put(`/updateAppartmentStatus/${appartmentId}`, updateAppartments);
             })
             .then(() => {
                 console.log('Request accepted and processed successfully.');

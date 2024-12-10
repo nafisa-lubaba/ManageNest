@@ -1,6 +1,9 @@
  # Managenest Frontend
 
 Welcome to the **Managenest** frontend repository. This project is built with modern technologies like React, Vite, Firebase, and more. Managenest is an app with role-based access control (User, Member, Admin), providing features for efficient management.
+## Admin username: Nafisa Lubaba
+## Admin email: nafisalubaba71@gmail.com
+## Admin password:1234567N@a
 
 ## Live Link
 

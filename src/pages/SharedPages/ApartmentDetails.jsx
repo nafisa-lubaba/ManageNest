@@ -61,7 +61,8 @@ const ApartmentDetails = () => {
             userName : user.displayName,
             userEmail : user.email,
             ownerEmail : apartment.ownerEmail,
-            ownerName : apartment.ownerName
+            ownerName : apartment.ownerName,
+            appartmentId : apartment._id
         }
         axiosPublic.post("/bookedAppartment", agreementDetails).then((res) => {
             if (res.data.insertedId) {
