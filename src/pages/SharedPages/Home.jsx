@@ -13,7 +13,7 @@ const Home = () => {
             <Cards></Cards>
             <Coupons></Coupons>
             <FeaturesSection />
-            <TestimonialsSection />
+            {/* <TestimonialsSection /> */}
             <StatisticsSection />
             <Maps></Maps>
             <CTASection />

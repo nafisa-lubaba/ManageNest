@@ -71,7 +71,7 @@ const Slider = () => {
               
               <h2 className="text-3xl md:text-6xl font-bold text-white leading-tight
                            opacity-0 translate-y-4 transition-all duration-700 delay-500 group-hover:opacity-100 group-hover:translate-y-0">
-                Celestial hospitality awaits: 
+                A cosmic embrace calls:
                 <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                   {' '}ManageNest
                 </span>

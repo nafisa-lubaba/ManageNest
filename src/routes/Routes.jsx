@@ -22,8 +22,9 @@ import ManageMembers from "../pages/AdminPages/ManageMembers";
 import MakeAnnouncement from "../pages/AdminPages/MakeAnnouncement";
 import AgreementRequests from "../pages/AdminPages/AgreementRequests";
 import PaymentForm from "../pages/MemberPages/PaymentForm";
-
- import PaymentPage from "../pages/MemberPages/PaymentPage";
+import PaymentPage from "../pages/MemberPages/PaymentPage";
+import PaymentHistory from "../pages/MemberPages/PaymentHistory";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -38,20 +39,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/apartment",
-        element: <ApartmentListing></ApartmentListing>,
+        element: <PrivateRoute><ApartmentListing /></PrivateRoute>
       },
       {
         path: "/apartment/:id",
-        element: <ApartmentDetails />,
-        // loader: ({ params }) => fetch(`http://localhost:5000/apartments/${params.id}`)
+        element: <PrivateRoute><ApartmentDetails /></PrivateRoute>,
       },
       {
         path: "/aboutUs",
-        element: <AboutUs></AboutUs>,
+        element: <PrivateRoute><AboutUs /></PrivateRoute>
       },
-
-
-
     ],
   },
   {
@@ -89,6 +86,10 @@ export const router = createBrowserRouter([
         element: <PaymentForm></PaymentForm>,
       },
       {
+        path: 'paymentHistory',
+        element: <PaymentHistory></PaymentHistory>,
+      },
+      {
         path: "payment/:id",
         element: <PaymentPage />,
         loader: ({ params, request }) => {
@@ -96,14 +97,14 @@ export const router = createBrowserRouter([
           return {
             id: params.id,
             rent: url.searchParams.get('rent'),
-            month: url.searchParams.get('month')
+            month: url.searchParams.get('month'),
+            apartmentNo: url.searchParams.get('apartmentNo'),
+            blockNo: url.searchParams.get('blockNo'),
+            floorNo: url.searchParams.get('floorNo'),
           };
-        }
+        },
       },
-      {
-        path: 'paymentHistory',
-        element:<paymentHistory></paymentHistory>,
-      },
+
       //adminRoute
       {
         path: 'adminProfile',

@@ -83,6 +83,8 @@ const PaymentForm = () => {
   }
 
   const payment = payments[0];
+  console.log(payment._id);
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#06b6d4]/10 to-[#06b6d4]/5 py-12 px-4">
@@ -197,7 +199,7 @@ const PaymentForm = () => {
                 {/* Submit Button */}
                 {selectedMonth ? (
                   <Link
-                    to={`/dashboard/payment/${payment.id}?rent=${finalAmount}&month=${selectedMonth}`}
+                    to={`/dashboard/payment/${payment._id}?rent=${finalAmount}&month=${selectedMonth}&apartmentNo=${payment.apartmentNo}&blockNo=${payment.blockNo}&floorNo=${payment.floorNo}`}
                     className="block w-full"
                   >
                     <button

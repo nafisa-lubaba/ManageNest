@@ -2,23 +2,15 @@
 import { MdEmail, MdCalendarToday, MdApartment, MdLocationOn, MdHome } from 'react-icons/md'; // Import necessary React Icons
 import { FaUserCircle, FaHashtag } from 'react-icons/fa';
 import UseAuth from '../../hooks/UseAuth';
+import { Link } from 'react-router-dom';
 
 const UserProfile = () => {
   const { user } = UseAuth();
   console.log(user);
   
   // Sample user data
-  const users = {
-    name: "Sarah Anderson",
-    email: "sarah.anderson@example.com",
-    joinDate: "2024-03-15",
-    profileImage: "/api/placeholder/150/150",
-    apartmentInfo: {
-      floor: "none",
-      block: "none",
-      roomNo: "none",
-    },
-  };
+ 
+  
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -50,10 +42,7 @@ const UserProfile = () => {
                 <MdEmail className="w-5 h-5 text-[#06b6d4] mr-3" />
                 <span className="text-gray-600">{user?.email}</span>
               </div>
-              <div className="flex items-center">
-                <MdCalendarToday className="w-5 h-5 text-[#06b6d4] mr-3" />
-                <span className="text-gray-600">Joined: {users.joinDate}</span>
-              </div>
+             
             </div>
           </div>
 
@@ -64,31 +53,8 @@ const UserProfile = () => {
               Apartment Details
             </h2>
 
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <MdLocationOn className="w-4 h-4 text-[#06b6d4] mr-2" />
-                  <span className="text-gray-600">Floor</span>
-                </div>
-                <span className="text-gray-500">{users.apartmentInfo.floor}</span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <MdHome className="w-4 h-4 text-[#06b6d4] mr-2" />
-                  <span className="text-gray-600">Block</span>
-                </div>
-                <span className="text-gray-500">{users.apartmentInfo.block}</span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <FaHashtag className="w-4 h-4 text-[#06b6d4] mr-2" />
-                  <span className="text-gray-600">Room No</span>
-                </div>
-                <span className="text-gray-500">{users.apartmentInfo.roomNo}</span>
-              </div>
-            </div>
+           <p className='bg-cyan-500'>By Apartment First</p>
+           <Link to='/apartment'> To Know More </Link>
           </div>
         </div>
       </div>

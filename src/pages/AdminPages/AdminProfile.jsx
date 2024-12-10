@@ -12,7 +12,7 @@ const AdminProfile = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/apartments`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/apartments`);
         const filteredApartments = data.filter(apartment => apartment.ownerEmail === user?.email);
         setApartments(filteredApartments);
       } catch (error) {

@@ -1,135 +1,11 @@
-// import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-// import { useEffect, useState } from 'react';
-// import useAxiosPublic from '../../hooks/UseAxiosPublic';
-// import UseAuth from '../../hooks/UseAuth';
-
-
-
-
-// const CheckoutForm = ({id, month, rent} ) => {
-//     const [error, setError] = useState('');
-//     const [clientSecret, setClientSecret] = useState('')
-//     const stripe = useStripe();
-//     const elements = useElements();
-//     const { user} = UseAuth();
-//     const axiosInstance = useAxiosPublic();
-
-
-//     useEffect(() => {
-//         if (rent > 0) {
-//             axiosInstance.post('/create-payment-intent', { price: rent })
-//                 .then(res => {
-//                     console.log(res.data.clientSecret);
-//                     setClientSecret(res.data.clientSecret);
-//                 })
-//         }
-
-//     }, [axiosInstance, rent])
-//     const handleSubmit = async (event) =>{
-//         event.preventDefault();
-//         if (!stripe || !elements) {
-//             return
-//         }
-//         const card = elements.getElement(CardElement)
-
-//         if (card === null) {
-//             return
-//         }
-
-//         const { error, paymentMethod } = await stripe.createPaymentMethod({
-//             type: 'card',
-//             card
-//         })
-
-//         if (error) {
-//             console.log('payment error', error);
-//             setError(error.message);
-//         }
-//         else {
-//             console.log('payment method', paymentMethod)
-//             setError('');
-//         }
-//          // confirm payment
-//          const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
-//             payment_method: {
-//                 card: card,
-//                 billing_details: {
-//                     email: user?.email || 'anonymous',
-//                     name: user?.displayName || 'anonymous'
-//                 }
-//             }
-//         })
-//         if (confirmError) {
-//             console.log('confirm error')
-//         }
-//         else {
-//             console.log('payment intent', paymentIntent)
-//             if (paymentIntent.status === 'succeeded') {
-//                 console.log('transaction id', paymentIntent.id);
-//                 setTransactionId(paymentIntent.id);
-
-//                 // now save the payment in the database
-//                 const payment = {
-//                     email: user.email,
-//                     price: totalPrice,
-//                     transactionId: paymentIntent.id,
-//                     date: new Date(), // utc date convert. use moment js to 
-//                     cartIds: rent.map(item => item._id),
-//                     menuItemIds: rent.map(item => item.menuId),
-//                     status: 'pending'
-//                 }
-//                 const res = await axiosSecure.post('/payments', payment);
-//                 console.log('payment saved', res.data);
-//                 refetch();
-//                 if (res.data?.paymentResult?.insertedId) {
-//                     Swal.fire({
-//                         position: "top-end",
-//                         icon: "success",
-//                         title: "Thank you for the taka paisa",
-//                         showConfirmButton: false,
-//                         timer: 1500
-//                     });
-//                     navigate('/dashboard/paymentHistory')
-//                 }
-//         }
-
-
-//     }
-//     return (
-//         <form onSubmit={handleSubmit}>
-//         <CardElement
-//             options={{
-//                 style: {
-//                     base: {
-//                         fontSize: '16px',
-//                         color: '#424770',
-//                         '::placeholder': {
-//                             color: '#aab7c4',
-//                         },
-//                     },
-//                     invalid: {
-//                         color: '#9e2146',
-//                     },
-//                 },
-//             }}
-//         />
-//         <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe  || !clientSecret}>
-//             Pay
-//         </button>
-//         <p className="text-red-600">{error}</p>
-//         {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
-//     </form>
-//     );
-// };
-
-// export default CheckoutForm;
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useEffect, useState } from 'react';
 import useAxiosPublic from '../../hooks/UseAxiosPublic';
 import UseAuth from '../../hooks/UseAuth';
 import { Navigate, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
-const CheckoutForm = ({ id, month, rent, cart = [] }) => {
+const CheckoutForm = ({ id, month, rent, apartmentNo, blockNo, floorNo }) => {
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
@@ -138,6 +14,9 @@ const CheckoutForm = ({ id, month, rent, cart = [] }) => {
     const { user } = UseAuth();
     const navigate = useNavigate();
     const axiosInstance = useAxiosPublic();
+    // console.log(user);
+
+
 
     useEffect(() => {
         if (rent > 0) {
@@ -198,57 +77,87 @@ const CheckoutForm = ({ id, month, rent, cart = [] }) => {
             // Save payment details to the database
             const payment = {
                 email: user?.email,
-                price: rent, // Use rent as totalPrice
+                name: user?.displayName,
+                price: rent, 
                 transactionId: paymentIntent.id,
                 date: new Date(),
-                cartIds: cart.map((item) => item._id),
-                menuItemIds: cart.map((item) => item.menuId),
-                status: 'pending',
+                month: month,
+                appartmentId: id,
+                apartmentNo: apartmentNo,
+                floorNo: floorNo,
+                blockNo: blockNo,
             };
+            console.log(payment);
+
 
             try {
-                const res = await axiosInstance.post('/payments', payment);
+                // Save the payment
+                const res = await axiosInstance.post('/paymetpovided', payment);
                 console.log('Payment saved:', res.data);
-                alert('Payment Successful!');
-            } catch (saveError) {
-                console.error('Error saving payment:', saveError);
+                
+            
+                // Delete the payment
+                const deleteRes = await axiosInstance.delete(`/deleteRequest/${id}`);
+                console.log('Payment deleted:', deleteRes.data);
+                toast.success("Payment Saved Successfully");
+                navigate('/dashboard/paymentHistory')
+
+            
+            } catch (error) {
+                console.error('Error saving or deleting payment:', error);
+                toast.error("An error occurred. Please try again.");
             }
-            navigate('/dashboard/paymentHistory')
+            
+            
         }
-        
-                  
+
+
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
+        <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Card Element */}
+            <div className="p-4 bg-white rounded-lg shadow-sm border">
+                <CardElement
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '16px',
+                                color: '#424770',
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
+                            },
+                            invalid: {
+                                color: '#9e2146',
                             },
                         },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}
-            />
-            <button
-                className="btn btn-sm btn-primary my-4"
-                type="submit"
-                disabled={!stripe || !clientSecret}
-            >
-                Pay
-            </button>
-            {error && <p className="text-red-600">{error}</p>}
+                    }}
+                />
+            </div>
+
+            {/* Submit Button */}
+            <div className="flex justify-center">
+                <button
+                    className="w-full py-3 px-6 bg-cyan-500 text-white rounded-md hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 transition-colors duration-300 disabled:bg-gray-400"
+                    type="submit"
+                    disabled={!stripe || !clientSecret}
+                >
+                    Pay
+                </button>
+            </div>
+
+            {/* Error Message */}
+            {error && <p className="text-red-600 text-center">{error}</p>}
+
+            {/* Transaction ID */}
             {transactionId && (
-                <p className="text-green-600">Your transaction ID: {transactionId}</p>
+                <p className="text-green-600 text-center">
+                    Your transaction ID: {transactionId}
+                </p>
             )}
         </form>
+
     );
 };
 

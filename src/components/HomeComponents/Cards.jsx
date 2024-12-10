@@ -8,7 +8,7 @@ const Cards = () => {
 
   useEffect(() => {
     const getData = async () => {
-        const { data } = await axios(`http://localhost:5000/apartments`);
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/apartments`);
         setCards(data.slice(0, 6)); 
     };
     getData();

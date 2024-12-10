@@ -29,7 +29,7 @@ const ApartmentDetails = () => {
     useEffect(() => {
         const fetchApartmentDetails = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:5000/apartments/${id}`);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/apartments/${id}`);
                 setApartment(data);
             } catch (error) {
                 setError("Failed to fetch apartment details. Please try again.");
